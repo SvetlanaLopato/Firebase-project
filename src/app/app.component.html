@@ -1,9 +1,20 @@
-<div class="nav-bar">
-    <a routerLink="/login">Login</a>
-    <a href="" (click)="authService.logout()">Logout</a>
-    <a routerLink="/signup">Signup</a>
-    <a routerLink="/profile">Profile</a>
-</div>
-<div>
-    <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav
+        #sidenav
+        mode="side"
+        opened="true"
+        class="app-sidenav"
+        [fixedInViewport]="true"
+    >
+        <mat-list>
+            <a mat-list-item routerLink="/login">Login</a>
+            <a mat-list-item routerLink="/signup">Sign up</a>
+            <a mat-list-item routerLink="/profile">Profile</a>
+            <mat-list-item (click)="authService.logout()">Logout</mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="app-sidenav-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

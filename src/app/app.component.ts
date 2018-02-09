@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 
 import { AuthService } from './services/auth.service';
+
 import './firebase';
+
 @Component({
     selector: "app-root",
     templateUrl: "./app.component.html",
