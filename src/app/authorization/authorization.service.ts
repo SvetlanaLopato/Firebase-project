@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 import { StorageService } from './storage.service';
 
-interface UserInfo {
-    email: string;
-    password: string;
-}
-
 @Injectable()
-export class AuthService {
-
+export class AuthorizationService {
     constructor(
-        private http: HttpClient,
-        private router: Router,
         private storageService: StorageService,
     ) {}
 
-    login( email, password) {
+    login(email: string, password: string) {
         return firebase.auth()
             .signInWithEmailAndPassword(email, password)
             .then(data => {
@@ -38,7 +28,7 @@ export class AuthService {
             });
     }
 
-    signUp(email, password) {
+    signUp(email: string, password: string) {
         return firebase.auth()
             .createUserWithEmailAndPassword(email, password)
             .then(data => {
@@ -50,12 +40,12 @@ export class AuthService {
         const userInfo = {
             email: data.email,
             token: data.refreshToken,
-        }
+        };
 
         this.storageService.setUser(userInfo);
     }
 
-    isAuthorized() {
+    isAuthorized(): boolean {
         return !!this.storageService.getUser();
     }
 }

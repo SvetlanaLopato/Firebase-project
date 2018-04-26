@@ -3,45 +3,32 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
-
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-
-import { HttpInterceptorService } from './services/http-interceptor.service';
-import { StorageService } from './services/storage.service';
-import { AuthService } from './services/auth.service';
+import { SharedModule } from './shared/shared.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { HttpInterceptorService } from './shared/http-interceptor.service';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        ProfileComponent,
-        PageNotFoundComponent,
-        SignUpComponent,
-    ],
+    declarations: [AppComponent],
     imports: [
+        RouterModule.forRoot([]),
         BrowserModule,
-        AppRoutingModule,
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
         AppMaterialModule,
+        AuthorizationModule,
+        SharedModule,
     ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpInterceptorService,
-            multi: true,
-        },
-        StorageService,
-        AuthService,
-    ],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpInterceptorService,
+        multi: true,
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+

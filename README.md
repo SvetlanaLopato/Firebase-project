@@ -1,11 +1,22 @@
-# Firebase-project
+#Firebase-project
 
-Serve:
-$firebase use information-system
-$firebase serve
+###Install firebase
+```
+$ npm install -g firebase-tools
+```
 
-Deploy:
-$firebase deploy
+###Serve:
+```
+$ firebase use information-system
+$ firebase serve
+```
 
-Build:
-$npm run-script build
+###Deploy:
+```
+$ firebase deploy
+```
+
+###Build:
+```
+$ npm run-script build
+```

@@ -13,10 +13,9 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-
     constructor(
         private router: Router,
-    ) {} 
+    ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).catch(error => {

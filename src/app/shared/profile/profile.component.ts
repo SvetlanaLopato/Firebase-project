@@ -19,14 +19,14 @@ export class ProfileComponent {
 
     getData() {
         const database = firebase.database();
-    
+
         database.ref('student')
-            .once("value")
+            .once('value')
             .then(snapshot => {
-                this.data = snapshot.child("student1").val(); // "ada"
+                this.data = snapshot.child('student1').val();
             })
             .catch(error => {
                 console.log(error.message);
-            })
+            });
     }
 }

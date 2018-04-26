@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from '../services/auth.service';
+import { AuthorizationService } from '../authorization.service';
 
 @Component({
     selector: 'app-login',
@@ -12,10 +12,10 @@ export class LoginComponent {
     private password: string;
     private error: string;
 
-    constructor(private authService: AuthService) {}
+    constructor(private authorizationService: AuthorizationService) {}
 
     login() {
-        this.authService
+        this.authorizationService
             .login(this.email, this.password)
             .catch(error => {
                 this.error = error.message;
