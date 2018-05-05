@@ -1,15 +1,59 @@
-<div>
-    Login
-    <form>
-        <div>
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email" [(ngModel)]="email">
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input id="password" type="password" name="email" [(ngModel)]="password">
-        </div>
-        <button type="submit" (click)="login()">Submit</button>
-        <div>{{error}}</div>
-    </form>
+<div class="wrapper">
+  <h1 class="caption--lg">LogIn</h1>
+  <form
+    novalidate
+    [formGroup]="loginForm"
+    (ngSubmit)="loginForm.valid && login(loginForm.value)"
+    class="login-form"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        maxlength="50"
+        autofocus
+      />
+      <mat-error
+        *ngIf="!loginForm.get('email').hasError('required') && loginForm.get('email').hasError('email')"
+      >
+        Please enter a valid email
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">
+        Field cannot be empty
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [type]="isPasswordVisible ? 'text' : 'password'"
+        placeholder="Password"
+        formControlName="password"
+        autocomplete="off"
+        maxlength="50"
+      />
+      <span matSuffix class="password-toggle" (click)="isPasswordVisible = !isPasswordVisible">
+        {{isPasswordVisible ? 'HIDE' : 'SHOW'}}
+      </span>
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">
+        Field cannot be empty
+      </mat-error>
+    </mat-form-field>
+    <div class="error-wrapper" [hidden]="!isErrorVisible">
+      <div class="error-message">Either login or password is incorrect</div>
+    </div>
+    <div class="spinner-wrapper">
+      <div *ngIf="loading; else loginButton" class="spinner-overlay">
+        <mat-spinner [diameter]="51" class="spinner"></mat-spinner>
+      </div>
+      <ng-template #loginButton>
+        <button class="button" type="submit">Log in</button>
+      </ng-template>
+    </div>
+  </form>
+  <p class="forgot-password">
+    Forgot Password?
+    <a routerLink="/reset-password" class="link">Reset</a>
+  </p>
 </div>

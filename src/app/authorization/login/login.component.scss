@@ -1,0 +1,46 @@
+@import '../../styles/base/variables';
+
+.caption--lg {
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+
+  mat-form-field {
+    width: 298px;
+  }
+}
+
+.password-toggle {
+  font-size: 10px;
+  font-weight: 700;
+  color: $grey--3;
+  letter-spacing: 0.08em;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  padding: 32px 0 10px;
+  color: $grey--3;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error-wrapper {
+  position: relative;
+  width: 100%;
+
+  .error-message {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -27px;
+    color: $red--1;
+    text-align: center;
+  }
+}

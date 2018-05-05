@@ -1,0 +1,27 @@
+.button {
+  display: inline-block;
+  padding: 10px 66px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  color: $white--1;
+  background-color: $blue--1;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: $blue--2;
+  }
+
+  &[disabled] {
+    background-color: $grey--4;
+    color: $grey--3;
+    background-image: none;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,17 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Base
+@import "app/styles/base/reset";
+@import "app/styles/base/variables";
+@import "app/styles/base/base";
+@import "app/styles/base/fonts";
+
+// Components
+@import "app/styles/components/input";
+@import "app/styles/components/button";
+@import "app/styles/components/spinner";
+
+// Utils
+@import "app/styles/utils/wrapper";
+@import "app/styles/utils/caption";
+@import "app/styles/utils/link";

@@ -1,0 +1,26 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: $grey--2;
+  background: $grey--1;
+  font-weight: 400;
+  font: 14px/1 Roboto, Arial, sans-serif;
+}
+
+a,
+a:link,
+a:visited,
+a:focus{
+  text-decoration: none;
+}

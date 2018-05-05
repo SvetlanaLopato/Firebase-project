@@ -2,51 +2,51 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 
 import { StorageService } from './storage.service';
+import { UserCredentials } from './models/user';
 
 @Injectable()
 export class AuthorizationService {
-    constructor(
-        private storageService: StorageService,
-    ) {}
+  constructor(
+    private storageService: StorageService,
+  ) {}
 
-    login(email: string, password: string) {
-        return firebase.auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(data => {
-                this.saveUser(data);
-            });
-    }
+  login({ email, password }: UserCredentials) {
+    return firebase.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(data => {
+        this.saveUser(data);
+      });
+  }
 
-    logout() {
-        firebase.auth()
-            .signOut()
-            .then(() => {
-                this.storageService.removeUser();
-            })
-            .catch(error => {
-                console.log(error.message);
-            });
-    }
+  logout() {
+    firebase.auth()
+      .signOut()
+      .then(() => {
+        this.storageService.removeUser();
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }
 
-    signUp(email: string, password: string) {
-        return firebase.auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(data => {
-                this.saveUser(data);
-            });
-    }
+  signUp(email: string, password: string) {
+    return firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(data => {
+        this.saveUser(data);
+      });
+  }
 
-    saveUser(data) {
-        const userInfo = {
-            email: data.email,
-            token: data.refreshToken,
-        };
+  saveUser(data) {
+    const userInfo = {
+      email: data.email,
+      token: data.refreshToken,
+    };
 
-        this.storageService.setUser(userInfo);
-    }
+    this.storageService.setUser(userInfo);
+  }
 
-    isAuthorized(): boolean {
-        return !!this.storageService.getUser();
-    }
+  isAuthorized(): boolean {
+    return !!this.storageService.getUser();
+  }
 }
-

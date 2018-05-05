@@ -1,0 +1,11 @@
+.link {
+  color: $blue--3;
+
+  a:link,
+  &:visited,
+  &:hover,
+  &:focus {
+    color: $blue--3;
+    text-decoration: underline;
+  }
+}

@@ -7,20 +7,34 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginGuard } from './guards/login-guard.service';
 import { AuthGuard } from './guards/auth-guard.service';
 import { SharedRoutingModule } from './shared-routing.module';
+import { FormBuilder } from '@angular/forms';
+import { ValidatorService } from './services/validator.service';
+import { WaitingIndicatorComponent } from './waiting-indicator/waiting-indicator.component';
+import { WaitingIndicatorService } from './waiting-indicator/waiting-indicator.service';
+import { AppMaterialModule } from '../app-material.module';
+import { UtilsService } from './services/utils.service';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedRoutingModule,
+    AppMaterialModule,
   ],
   declarations: [
     ProfileComponent,
     PageNotFoundComponent,
+    WaitingIndicatorComponent,
+  ],
+  exports: [
+    WaitingIndicatorComponent,
   ],
   providers: [
     HttpInterceptorService,
     LoginGuard,
     AuthGuard,
+    ValidatorService,
+    WaitingIndicatorService,
+    UtilsService,
   ],
 })
 export class SharedModule { }

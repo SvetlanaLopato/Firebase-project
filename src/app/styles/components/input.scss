@@ -1,0 +1,71 @@
+.mat-form-field-underline {
+  background-color: $grey--3;
+
+  .registration-captcha & {
+    display: none;
+  }
+
+  .mat-focused & {
+    background-color: $blue--1;
+  }
+
+  .mat-form-field-invalid & {
+    background-color: $red--1;
+  }
+}
+
+.mat-form-field-label,
+.mat-form-field-invalid .mat-form-field-label,
+.mat-focused .mat-form-field-label {
+  color: $grey--3;
+  padding-top: 2px;
+  
+  .mat-placeholder-required {
+    color: $grey--3;
+  }
+}
+
+.mat-input-element,
+.mat-select-value {
+  color: $grey--3;
+}
+
+.mat-select-arrow,
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+  color: $grey--2;
+}
+
+.mat-error,
+.error {
+  color: $red--1;
+}
+
+.mat-form-field {
+  line-height: normal;
+
+  .mat-input-subscript-wrapper {
+    margin-top: 4px;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+
+.no-asterisk .mat-placeholder-required {
+  display: none;
+}
+
+.mat-hint {
+  font-size: 12px;
+  color: $grey--3;
+}
+
+.mat-form-field-disabled,
+.mat-form-field-disabled.mat-input-container .mat-select-trigger, {
+  cursor: not-allowed;
+
+  .mat-input-element {
+    cursor: not-allowed;
+  }
+}
