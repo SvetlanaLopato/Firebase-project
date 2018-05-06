@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { AuthorizationService } from '../authorization.service';
 import { ValidatorService } from '../../shared/services/validator.service';
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private validatorService: ValidatorService,
     private utilsService: UtilsService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
       .then(
         () => {
           this.loading = false;
+          this.router.navigate(['/dashboard']);
         },
         error => {
           this.isErrorVisible = true;

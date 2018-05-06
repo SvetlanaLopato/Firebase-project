@@ -18,6 +18,10 @@ export class AuthorizationService {
       });
   }
 
+  resetPassword(email: string) {
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
+
   logout() {
     firebase.auth()
       .signOut()

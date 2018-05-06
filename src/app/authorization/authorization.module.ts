@@ -8,6 +8,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthorizationService } from './authorization.service';
 import { StorageService } from './storage.service';
 import { AppMaterialModule } from '../app-material.module';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResetPasswordSuccessComponent } from './reset-password-success/reset-password-success.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import { AppMaterialModule } from '../app-material.module';
   declarations: [
     LoginComponent,
     SignUpComponent,
+    ResetPasswordComponent,
+    ResetPasswordSuccessComponent,
   ],
   providers: [
     AuthorizationService,
