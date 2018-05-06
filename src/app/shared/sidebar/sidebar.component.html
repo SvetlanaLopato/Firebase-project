@@ -1,0 +1,45 @@
+<aside class="sidebar" [ngClass]="{'sidebar--open': isMenuOpen}">
+  <div class="sidebar-header">
+    <img
+      src="http://ccci.arokiait.com/sites/all/themes/theme822/avatar-mini.jpg.png"
+      alt="User photo"
+      class="user-image"
+    >
+    <div class="user-name" title="Lopato Svetlana Ivanovna">
+      Lopato Svetlana Ivanovna
+    </div>
+  </div>
+
+  <div class="sidebar-body">
+    <mat-icon
+      class="sidebar-icon icon-menu"
+      (click)="isMenuOpen = !isMenuOpen"
+    >
+      {{isMenuOpen ? 'close' : 'menu' }}
+    </mat-icon>
+
+    <a href="/users" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">people</mat-icon>
+      <span class="sidebar-link">User list</span>
+    </a>
+    <a href="/teachers" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">people_outline</mat-icon>
+      <span class="sidebar-link">Teacher list</span>
+    </a>
+    <a href="/registration" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">person_add</mat-icon>
+      <span class="sidebar-link">Add user</span>
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="/profile" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">assignment_ind</mat-icon>
+      <span class="sidebar-link">Profile Details</span>
+    </a>
+    <a href="/logout" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">exit_to_app</mat-icon>
+      <span class="sidebar-link">Log Out</span>
+    </a>
+  </div>
+</aside>

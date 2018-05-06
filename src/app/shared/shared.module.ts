@@ -13,6 +13,7 @@ import { WaitingIndicatorComponent } from './waiting-indicator/waiting-indicator
 import { WaitingIndicatorService } from './waiting-indicator/waiting-indicator.service';
 import { AppMaterialModule } from '../app-material.module';
 import { UtilsService } from './services/utils.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -24,9 +25,11 @@ import { UtilsService } from './services/utils.service';
     ProfileComponent,
     PageNotFoundComponent,
     WaitingIndicatorComponent,
+    SidebarComponent,
   ],
   exports: [
     WaitingIndicatorComponent,
+    SidebarComponent,
   ],
   providers: [
     HttpInterceptorService,

@@ -1,0 +1,104 @@
+@import '../../styles/base/variables';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 100vh;
+  background: $white--1;
+  box-shadow: $shadow--1;
+  overflow: hidden;
+  transition: width .3s;
+}
+
+.sidebar--open {
+  width: 204px;
+}
+
+.sidebar-header {
+  padding: 7px 12px;
+  border-bottom: 1px solid $grey--1;
+  background: $grey--5;
+  transition: padding-left .2s;
+  display: flex;
+  align-items: center;
+  height: 54px;
+
+  .sidebar--open & {
+    padding-left: 20px;
+  }
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user-name {
+  white-space: normal;
+  text-align: center;
+  margin-left: 10px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  .sidebar--open & {
+    opacity: 1;
+  }
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.icon-menu {
+  margin-bottom: 50px;
+  cursor: pointer;
+  color: $blue--1;
+}
+
+.sidebar-footer {
+  padding: 18px 20px 40px;
+}
+
+.sidebar-link-block {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  cursor: pointer;
+  color: $grey--3;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $blue--1;
+  }
+
+  & + & {
+    margin-top: 18px;
+  }
+}
+
+.sidebar-link {
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 17px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .2s;
+
+  .sidebar--open & {
+    opacity: 1;
+  }
+}
+
+.sidebar-body {
+  flex-grow: 1;
+  padding: 40px 20px;
+}
