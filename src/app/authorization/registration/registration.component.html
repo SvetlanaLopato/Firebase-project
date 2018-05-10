@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <h1 class="caption--lg">Registration</h1>
+  <form
+    novalidate
+    [formGroup]="registrationForm"
+    (ngSubmit)="registrationForm.valid && submit(registrationForm.value)"
+  >
+    <div class="registration-fields">
+      
+    </div>
+
+    <div class="spinner-wrapper">
+      <div *ngIf="loading | async; else submitButton" class="spinner-overlay">
+        <mat-spinner [diameter]="51" class="spinner"></mat-spinner>
+      </div>
+      <ng-template #submitButton>
+        <button class="button" type="submit">Submit</button>
+      </ng-template>
+    </div>
+  </form>
+</div>
+
+<div class="login-link-wrapper">
+  <div class="return-to-login">
+    Already have an account?
+    <a href="login" class="link">Login</a>
+  </div>
+</div>

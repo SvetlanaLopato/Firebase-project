@@ -1,0 +1,21 @@
+@import '../../styles/base/variables';
+
+.wrapper {
+  text-align: center;
+}
+
+.return-to-login {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: $grey--3;
+  border-radius: 20px;
+  background: transparentize($grey--2, 0.95);
+}
+
+.login-link-wrapper {
+  display: flex;
+  justify-content: center;
+}

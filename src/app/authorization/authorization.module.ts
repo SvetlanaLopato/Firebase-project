@@ -10,6 +10,7 @@ import { StorageService } from './storage.service';
 import { AppMaterialModule } from '../app-material.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetPasswordSuccessComponent } from './reset-password-success/reset-password-success.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ResetPasswordSuccessComponent } from './reset-password-success/reset-pa
     SignUpComponent,
     ResetPasswordComponent,
     ResetPasswordSuccessComponent,
+    RegistrationComponent,
   ],
   providers: [
     AuthorizationService,
