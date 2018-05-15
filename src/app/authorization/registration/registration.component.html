@@ -5,8 +5,169 @@
     [formGroup]="registrationForm"
     (ngSubmit)="registrationForm.valid && submit(registrationForm.value)"
   >
-    <div class="registration-fields">
-      
+    <div>
+      <div class="photo-block">
+        <label class="upload-image-field" [ngClass]="{'disable-upload': uploadingPhoto | async}">
+          <input
+            [disabled]="uploadingPhoto | async"
+            accept="image/*"
+            type="file"
+            (change)="uploadPhoto($event.target.files)"
+          >
+          <img
+            class="photo"
+            [src]="registrationForm.get('photo').value || DEFAULT_PHOTO"
+            alt="Profile photo"
+          >
+          <div class="upload-wrapper upload-field">
+            <mat-icon class="material-icon--lg">file_upload</mat-icon>
+          </div>
+          <div class="upload-wrapper" *ngIf="uploadingPhoto | async">
+            <mat-spinner [diameter]="40" class="spinner"></mat-spinner>
+          </div>
+        </label>
+        <div class="name-fields">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="First Name"
+              formControlName="firstName"
+              maxlength="50"
+              required
+              autofocus
+            />
+            <mat-error *ngIf="registrationForm.get('firstName').hasError('required')">
+              Field cannot be empty
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Surname"
+              formControlName="surname"
+              maxlength="50"
+              required
+            />
+            <mat-error *ngIf="registrationForm.get('surname').hasError('required')">
+              Field cannot be empty
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Middle Name"
+              formControlName="middleName"
+              maxlength="50"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="registration-fields">
+        <mat-form-field class="justify-self--end">
+          <input
+            matInput
+            placeholder="Email"
+            type="email"
+            formControlName="email"
+            maxlength="50"
+            required
+          />
+          <mat-error *ngIf="registrationForm.get('email').hasError('required')">
+            Field cannot be empty
+          </mat-error>
+          <mat-error
+            *ngIf="!registrationForm.get('email').hasError('required') && registrationForm.get('email').hasError('email')"
+          >
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            maxlength="50"
+            required
+          />
+          <mat-error *ngIf="registrationForm.get('password').hasError('required')">
+            Field cannot be empty
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="justify-self--end">
+          <mat-select
+            placeholder="Course"
+            formControlName="course"
+            required
+          >
+            <mat-option [value]="COURSES.COURSE_1">{{COURSES.COURSE_1}}</mat-option>
+            <mat-option [value]="COURSES.COURSE_2">{{COURSES.COURSE_2}}</mat-option>
+            <mat-option [value]="COURSES.COURSE_3">{{COURSES.COURSE_3}}</mat-option>
+            <mat-option [value]="COURSES.COURSE_4">{{COURSES.COURSE_4}}</mat-option>
+            <mat-option [value]="COURSES.COURSE_5">{{COURSES.COURSE_5}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('course').hasError('required')">
+            Field cannot be empty
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Group"
+            formControlName="group"
+            maxlength="50"
+            required
+          />
+          <mat-error *ngIf="registrationForm.get('group').hasError('required')">
+            Field cannot be empty
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="justify-self--end">
+          <mat-select
+            placeholder="User Role"
+            formControlName="role"
+            required
+          >
+            <mat-option [value]="USER_ROLES.USER">{{USER_ROLES.USER}}</mat-option>
+            <mat-option [value]="USER_ROLES.ADMIN">{{USER_ROLES.ADMIN}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('role').hasError('required')">
+            Field cannot be empty
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Date Of Birth"
+            type="date"
+            formControlName="dateOfBirth"
+            maxlength="50"
+          />
+        </mat-form-field>
+        <mat-form-field class="justify-self--end">
+          <input
+            matInput
+            placeholder="Phone Number"
+            formControlName="phoneNumber"
+            maxlength="50"
+          />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="additional-info-field">
+        <textarea
+          matInput
+          matTextareaAutosize
+          matAutosizeMaxRows="8"
+          type="text"
+          placeholder="Additional Info"
+          formControlName="additionalInfo"
+          maxlength="800"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="error-wrapper" [hidden]="!errorMessage">
+      <div class="error-message">{{errorMessage}}</div>
     </div>
 
     <div class="spinner-wrapper">

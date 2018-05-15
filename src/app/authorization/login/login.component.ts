@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       .then(
         () => {
           this.loading = false;
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['dashboard']);
         },
         error => {
           this.isErrorVisible = true;

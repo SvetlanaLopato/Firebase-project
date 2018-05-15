@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 
 import { StorageService } from './storage.service';
-import { UserCredentials } from './models/user';
+import { UserCredentials, User } from './models/user';
+import { USER_ROLES } from './models/user-roles';
 
 @Injectable()
 export class AuthorizationService {
@@ -12,10 +13,7 @@ export class AuthorizationService {
 
   login({ email, password }: UserCredentials) {
     return firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(data => {
-        this.saveUser(data);
-      });
+      .signInWithEmailAndPassword(email, password);
   }
 
   resetPassword(email: string) {
@@ -27,30 +25,29 @@ export class AuthorizationService {
       .signOut()
       .then(() => {
         this.storageService.removeUser();
-      })
-      .catch(error => {
-        console.log(error.message);
       });
   }
 
-  signUp(email: string, password: string) {
-    return firebase.auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(data => {
-        this.saveUser(data);
-      });
+  createUser({ email, password }: UserCredentials) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-  saveUser(data) {
-    const userInfo = {
-      email: data.email,
-      token: data.refreshToken,
-    };
+  saveUser(uid: string, user: User) {
+    const database: any = firebase.database();
+    const folderName = user.role === USER_ROLES.ADMIN ? 'admins' : 'users';
 
-    this.storageService.setUser(userInfo);
+    return database.ref(`${folderName}/${uid}`).set(user);
   }
 
   isAuthorized(): boolean {
     return !!this.storageService.getUser();
+  }
+
+  uploadImage(file) {
+    const ref = firebase.storage().ref();
+    const name = `images/users/${file.name}_${(+new Date())}`;
+    const metadata = { contentType: file.type };
+
+    return ref.child(name).put(file, metadata);
   }
 }
