@@ -1,19 +1,41 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 
-import { StorageService } from './storage.service';
 import { UserCredentials, User } from './models/user';
 import { USER_ROLES } from './models/user-roles';
 
 @Injectable()
 export class AuthorizationService {
-  constructor(
-    private storageService: StorageService,
-  ) {}
+  private tokenTitle = 'information_system_user';
+
+  constructor() {}
 
   login({ email, password }: UserCredentials) {
     return firebase.auth()
-      .signInWithEmailAndPassword(email, password);
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        const token = JSON.stringify({ uid: user.uid });
+
+        localStorage.setItem(this.tokenTitle, token);
+
+        this.getUserFromDB('users');
+        this.getUserFromDB('admins');
+      });
+  }
+
+  private getUserFromDB(dirName: string) {
+    const database = firebase.database();
+    const { uid } = JSON.parse(localStorage.getItem(this.tokenTitle));
+
+    database.ref(`${dirName}/${uid}`)
+        .once('value')
+        .then(snapshot => {
+            const user = snapshot.val();
+            const token = JSON.stringify({ ...user, uid });
+
+            // tslint:disable-next-line:no-unused-expression
+            user && localStorage.setItem(this.tokenTitle, token);
+        });
   }
 
   resetPassword(email: string) {
@@ -24,7 +46,7 @@ export class AuthorizationService {
     firebase.auth()
       .signOut()
       .then(() => {
-        this.storageService.removeUser();
+        localStorage.removeItem(this.tokenTitle);
       });
   }
 
@@ -32,7 +54,7 @@ export class AuthorizationService {
     return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-  saveUser(uid: string, user: User) {
+  saveUserToDB(uid: string, user: User) {
     const database: any = firebase.database();
     const folderName = user.role === USER_ROLES.ADMIN ? 'admins' : 'users';
 
@@ -40,7 +62,7 @@ export class AuthorizationService {
   }
 
   isAuthorized(): boolean {
-    return !!this.storageService.getUser();
+    return !!localStorage.getItem(this.tokenTitle);
   }
 
   uploadImage(file) {
@@ -49,5 +71,9 @@ export class AuthorizationService {
     const metadata = { contentType: file.type };
 
     return ref.child(name).put(file, metadata);
+  }
+
+  getUser(): User {
+    return JSON.parse(localStorage.getItem(this.tokenTitle));
   }
 }

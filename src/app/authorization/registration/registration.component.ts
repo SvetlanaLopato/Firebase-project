@@ -20,7 +20,7 @@ export class RegistrationComponent {
   registrationForm: FormGroup;
   loading = new BehaviorSubject(false);
   uploadingPhoto = new BehaviorSubject(false);
-  DEFAULT_PHOTO = '/assets/images/unknown.png';
+  DEFAULT_PHOTO_URL = '/assets/images/unknown.png';
   USER_ROLES = USER_ROLES;
   COURSES = COURSES;
   errorMessage: string;
@@ -38,9 +38,9 @@ export class RegistrationComponent {
 
   private createForm(): void {
     this.registrationForm = this.formBuilder.group({
-      photo: [''],
+      photoUrl: [''],
       firstName: ['', this.validatorService.required],
-      surname: ['', this.validatorService.required],
+      lastName: ['', this.validatorService.required],
       middleName: [''],
       email: ['', [this.validatorService.email, this.validatorService.required] ],
       dateOfBirth: [''],
@@ -65,7 +65,7 @@ export class RegistrationComponent {
     this.authorizationService
       .createUser(query)
       .then(
-        this.saveUser.bind(this, query),
+        this.saveUserToDB.bind(this, query),
         error => {
           this.loading.next(false);
           this.errorMessage = error.message;
@@ -73,9 +73,9 @@ export class RegistrationComponent {
       );
   }
 
-  saveUser(user: User, { uid }) {
+  saveUserToDB(user: User, { uid }) {
     this.authorizationService
-      .saveUser(uid, user)
+      .saveUserToDB(uid, user)
       .then(() => {
         this.loading.next(false);
         this.router.navigate(['dashboard']);
@@ -96,7 +96,7 @@ export class RegistrationComponent {
       .uploadImage(files[0])
       .then(snapshot => {
         this.uploadingPhoto.next(false);
-        this.registrationForm.controls['photo'].setValue(snapshot.downloadURL);
+        this.registrationForm.controls['photoUrl'].setValue(snapshot.downloadURL);
       });
   }
 }

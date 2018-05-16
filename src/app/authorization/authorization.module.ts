@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthorizationRoutingModule } from './authorization-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AuthorizationService } from './authorization.service';
-import { StorageService } from './storage.service';
 import { AppMaterialModule } from '../app-material.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetPasswordSuccessComponent } from './reset-password-success/reset-password-success.component';
@@ -27,7 +26,6 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   providers: [
     AuthorizationService,
-    StorageService,
   ],
 })
 export class AuthorizationModule { }

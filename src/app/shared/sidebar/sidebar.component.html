@@ -1,12 +1,12 @@
 <aside class="sidebar" [ngClass]="{'sidebar--open': isMenuOpen}">
   <div class="sidebar-header">
     <img
-      src="/assets/images/unknown.png"
+      [src]="user.photoUrl || DEFAULT_PHOTO_URL"
       alt="User photo"
       class="user-image"
     >
-    <div class="user-name" title="Lopato Svetlana Ivanovna">
-      Lopato Svetlana Ivanovna
+    <div class="user-name" [title]="user">
+      {{user | fullName}}
     </div>
   </div>
 
@@ -37,9 +37,9 @@
       <mat-icon class="sidebar-icon">assignment_ind</mat-icon>
       <span class="sidebar-link">Profile Details</span>
     </a>
-    <a routerLink="/logout" class="sidebar-link-block">
+    <span (click)="authorizationService.logout()" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">exit_to_app</mat-icon>
       <span class="sidebar-link">Log Out</span>
-    </a>
+    </span>
   </div>
 </aside>

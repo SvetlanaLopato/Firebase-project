@@ -14,6 +14,7 @@ import { WaitingIndicatorService } from './waiting-indicator/waiting-indicator.s
 import { AppMaterialModule } from '../app-material.module';
 import { UtilsService } from './services/utils.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FullNamePipe } from './pipes/full-name.pipe';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PageNotFoundComponent,
     WaitingIndicatorComponent,
     SidebarComponent,
+    FullNamePipe,
   ],
   exports: [
     WaitingIndicatorComponent,

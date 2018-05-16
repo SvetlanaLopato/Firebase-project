@@ -4,9 +4,9 @@ export interface UserCredentials {
 }
 
 export interface User {
-  photo: string;
+  photoUrl: string;
   firstName: string;
-  surname: string;
+  lastName: string;
   middleName: string;
   email: string;
   dateOfBirth: string;
