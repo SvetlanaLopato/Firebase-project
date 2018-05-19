@@ -5,8 +5,10 @@
       alt="User photo"
       class="user-image"
     >
-    <div class="user-name" [title]="user">
-      {{user | fullName}}
+    <div class="user-name ellipsis" [title]="user | name">
+      <span class="ellipsis">{{user.firstName}}</span>
+      <br>
+      <span class="ellipsis">{{user.lastName}}</span>
     </div>
   </div>
 
@@ -26,7 +28,7 @@
       <mat-icon class="sidebar-icon">people_outline</mat-icon>
       <span class="sidebar-link">Teacher list</span>
     </a>
-    <a routerLink="/registration" class="sidebar-link-block">
+    <a routerLink="/registration" *ngIf="isAdmin" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">person_add</mat-icon>
       <span class="sidebar-link">Add user</span>
     </a>
@@ -37,7 +39,7 @@
       <mat-icon class="sidebar-icon">assignment_ind</mat-icon>
       <span class="sidebar-link">Profile Details</span>
     </a>
-    <span (click)="authorizationService.logout()" class="sidebar-link-block">
+    <span (click)="authorizationService.logout()" title="logout" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">exit_to_app</mat-icon>
       <span class="sidebar-link">Log Out</span>
     </span>

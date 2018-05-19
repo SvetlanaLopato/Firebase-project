@@ -14,7 +14,8 @@ import { WaitingIndicatorService } from './waiting-indicator/waiting-indicator.s
 import { AppMaterialModule } from '../app-material.module';
 import { UtilsService } from './services/utils.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FullNamePipe } from './pipes/full-name.pipe';
+import { NamePipe } from './pipes/name.pipe';
+import { RoleGuard } from './guards/role.guard';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { FullNamePipe } from './pipes/full-name.pipe';
     PageNotFoundComponent,
     WaitingIndicatorComponent,
     SidebarComponent,
-    FullNamePipe,
+    NamePipe,
   ],
   exports: [
     WaitingIndicatorComponent,
@@ -37,6 +38,7 @@ import { FullNamePipe } from './pipes/full-name.pipe';
     HttpInterceptorService,
     LoginGuard,
     AuthGuard,
+    RoleGuard,
     ValidatorService,
     WaitingIndicatorService,
     UtilsService,

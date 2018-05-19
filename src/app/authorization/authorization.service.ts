@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 import { UserCredentials, User } from './models/user';
 import { USER_ROLES } from './models/user-roles';
@@ -8,7 +9,9 @@ import { USER_ROLES } from './models/user-roles';
 export class AuthorizationService {
   private tokenTitle = 'information_system_user';
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   login({ email, password }: UserCredentials) {
     return firebase.auth()
@@ -47,6 +50,7 @@ export class AuthorizationService {
       .signOut()
       .then(() => {
         localStorage.removeItem(this.tokenTitle);
+        this.router.navigate(['login']);
       });
   }
 
@@ -75,5 +79,11 @@ export class AuthorizationService {
 
   getUser(): User {
     return JSON.parse(localStorage.getItem(this.tokenTitle));
+  }
+
+  hasRole(role: string): boolean {
+    const user = this.getUser();
+
+    return user.role === role;
   }
 }
