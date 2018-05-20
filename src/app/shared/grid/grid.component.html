@@ -1,0 +1,109 @@
+<div>
+  <div class="grid-toolbar wrapper--md">
+    <h2 class="caption--md">
+      {{gridTitle}}
+      <span class="grid-total-count">({{dataSource.data.length}})</span>
+    </h2>
+
+    <div class="grid-search">
+      <mat-form-field [class.grid-search-active]="isSearchActive">
+        <input
+          [formControl]="searchField"
+          #search
+          matInput
+          (blur)="hideSearch()"
+          placeholder="Search"
+        >
+        <mat-icon
+          *ngIf="search.value.length"
+          matSuffix
+          class="material-icon--sm grid-search-icon grid-search-icon--cancel"
+          (click)="clearSearch()"
+        >cancel</mat-icon>
+      </mat-form-field>
+      <mat-icon
+        matSuffix
+        class="material-icon--md grid-search-icon"
+        (click)="isSearchActive = true; search.focus();"
+      >search</mat-icon>
+    </div>
+  </div>
+
+  <div class="grid-filters wrapper--md">
+    <mat-form-field>
+      <mat-select placeholder="Course" multiple [formControl]="courseControl">
+        <mat-option *ngFor="let course of courses" [value]="course">
+          {{course}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Group" multiple [formControl]="groupControl">
+        <mat-option *ngFor="let group of groups" [value]="group">
+          {{group}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="table wrapper--md" *ngIf="!(waitingIndicator.isActivated() | async)">
+    <ng-template #table>
+      <mat-table
+        [dataSource]="dataSource"
+        matSort
+        matSortDisableClear
+      >
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
+          <mat-header-cell
+            *matHeaderCellDef
+            [mat-sort-header]="column.sort || column.id"
+            [disabled]="column.disableSorting"
+            [ngStyle]="{'width': column.width}"
+          >
+            {{column.title}}
+          </mat-header-cell>
+  
+          <mat-cell *matCellDef="let row" [ngStyle]="{'width': column.width}">
+            <div [ngSwitch]="column.template">
+              <div *ngSwitchCase="'date'">{{row[column.id] | date:"MMM d, y"}}</div>
+  
+              <div *ngSwitchDefault class="ellipsis">
+                {{row[column.id]}}
+              </div>
+            </div>
+          </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+  
+      <mat-paginator
+        #paginator
+        *ngIf="dataSource.data.length > defaultPageSize"
+        [pageSize]="defaultPageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        class="paginator"
+      ></mat-paginator>
+    </ng-template>
+
+    <div class="empty-table table-content" *ngIf="!dataSource.filteredData.length; else table">
+      <mat-table>
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
+          <mat-header-cell *matHeaderCellDef [ngStyle]="{'width': column.width}">
+            {{column.title}}
+          </mat-header-cell>
+          <mat-cell></mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <div class="empty-table-message">
+        <span *ngIf="!search.value.length">{{emptyList}}</span>
+        <span *ngIf="search.value.length">{{emptySearch}}</span>
+      </div>
+    </div>
+  </div>
+</div>

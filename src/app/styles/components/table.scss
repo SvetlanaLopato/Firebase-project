@@ -1,0 +1,140 @@
+.table {
+  .mat-table {
+    overflow: hidden;
+  }
+
+  .mat-header-row,
+  .mat-row {
+    padding: 0 16px;
+    border-bottom-color: transparentize($grey--2, 0.9);
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    flex: none;
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .mat-header-row {
+    min-height: 42px;
+    border-bottom-width: 2px;
+  }
+
+  .mat-header-cell {
+    color: transparentize($grey--2, 0.4);
+  }
+
+  .mat-row {
+    min-height: 54px;
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    cursor: pointer;
+
+    &:nth-child(2n) {
+      background: $grey--5;
+    }
+
+    &:hover {
+      border: 1px solid $blue--3;
+    }
+
+    &:last-child:hover {
+      border-radius: 0 0 4px 4px;
+    }
+  }
+
+  .mat-row--align-start {
+    align-items: flex-start;
+  }
+
+  .mat-header-cell:not(:last-child),
+  .mat-cell:not(:last-child) {
+    padding-right: 16px;
+  }
+
+  .mat-sort-header-button {
+    font-size: 12px;
+  }
+
+  .mat-cell {
+    display: flex;
+    align-items: center;
+    color: $grey--2;
+
+    & > div {
+      width: 100%;
+    }
+  }
+
+  .grid-cell-default {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mat-sort-header-sorted {
+    color: $blue--1;
+  }
+
+  .table-content {
+    box-shadow: $shadow--1;
+    position: relative;
+  }
+
+  .mat-paginator.grid-pagination-hidden {
+    display: none;
+  }
+
+  .mat-sort-header-arrow {
+    margin: 0 0 0 4px;
+  }
+}
+
+.empty-table {
+  background: $white--1;
+}
+
+.empty-table-message {
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: transparentize($grey--2, 0.3);
+  letter-spacing: 0.05em;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.grid-total-count {
+  margin-left: 16px;
+  font-weight: 400;
+  color: $grey--3;
+}
+
+.paginator {
+  border-radius: 0 0 4px 4px;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-image: linear-gradient(-180deg, rgba(84, 98, 124, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0.1;
+  }
+
+  .mat-paginator-container {
+    justify-content: flex-start;
+    min-height: 70px;
+  }
+}

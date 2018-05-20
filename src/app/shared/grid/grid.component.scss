@@ -1,0 +1,86 @@
+@import '../../styles/base/variables';
+
+.grid-toolbar {
+  background-color: $grey--1;
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -40px;
+}
+
+.grid-search {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  position: relative;
+  top: 5px;
+
+  .mat-form-field {
+    width: 0;
+
+    &.grid-search-active {
+      width: 300px;
+
+      .mat-input-wrapper {
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+
+  .mat-input-element {
+    font-size: 15px;
+    height: 20px;
+    padding-right: 32px;
+  }
+
+  .mat-form-field-flex {
+    align-items: flex-start;
+  }
+
+  .mat-form-field-suffix {
+    display: flex;
+    align-items: center;
+
+    .mat-icon {
+      line-height: 1;
+    }
+  }
+}
+
+.grid-search-hidden {
+  opacity: 0;
+}
+
+.grid-search-icon {
+  position: absolute;
+  top: 15px;
+  cursor: pointer;
+  transition: color .3s;
+
+  &:hover {
+    color: $blue--1;
+  }
+}
+
+.grid-search-icon--cancel {
+  position: relative;
+  top: 3px;
+  right: 26px;
+}
+
+.grid-filters {
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  box-shadow: none;
+  margin-bottom: -30px;
+
+  .mat-form-field {
+    width: 300px;
+  }
+}
