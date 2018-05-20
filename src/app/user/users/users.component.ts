@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
 
@@ -21,6 +22,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private waitingIndicator: WaitingIndicatorService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -34,4 +36,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
+  goToDetails(id: string) {
+    this.router.navigate(['/students', id]);
+  }
 }

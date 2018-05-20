@@ -1,0 +1,17 @@
+@import '../../styles/base/variables';
+
+.wrapper--md {
+  background: none;
+  box-shadow: none;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  padding: 20px 0 35px;
+
+  .material-icons {
+    color: $white--1;
+    font-size: 23px;
+  }
+}

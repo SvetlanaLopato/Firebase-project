@@ -1,0 +1,43 @@
+@import '../../styles/base/variables';
+
+.mat-ink-bar {
+  display: none;
+}
+
+.mat-tab-header {
+  border: none;
+}
+
+.mat-tab-list {
+  .mat-tab-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+  }
+
+  .mat-tab-label,
+  .mat-tab-label:not(.mat-tab-disabled):focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    border-radius: 4px;
+    opacity: unset;
+    background-color: $white--1;
+    color: $grey--2;
+    font-weight: 700;
+    box-shadow: $shadow--1;
+
+    &.mat-tab-label-active {
+      background-color: $blue--3;
+      color: $white--1;
+    }
+  }
+}
+
+.mat-tab-body-content {
+  margin: 21px 0 60px;
+}
+
+.mat-tab-group .mat-tab-body.mat-tab-body-active {
+  overflow-y: hidden;
+}

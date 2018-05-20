@@ -62,7 +62,7 @@ export class AuthorizationService {
     const database: any = firebase.database();
     const folderName = user.role === USER_ROLES.ADMIN ? 'admins' : 'users';
 
-    return database.ref(`${folderName}/${uid}`).set(user);
+    return database.ref(`${folderName}/${uid}`).set({ ...user, uid });
   }
 
   isAuthorized(): boolean {

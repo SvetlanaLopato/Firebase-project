@@ -8,6 +8,8 @@ import { UsersComponent } from './users/users.component';
 import { UserService } from './user.service';
 import { SharedModule } from '../shared/shared.module';
 import { NamePipe } from '../shared/pipes/name.pipe';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserPersonalInfoComponent } from './user-personal-info/user-personal-info.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { NamePipe } from '../shared/pipes/name.pipe';
     SharedModule,
   ],
   declarations: [
-    UsersComponent
+    UsersComponent,
+    UserDetailsComponent,
+    UserPersonalInfoComponent
   ],
   providers: [
     UserService,

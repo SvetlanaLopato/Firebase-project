@@ -16,4 +16,5 @@ export interface User {
   group: string;
   additionalInfo: string;
   password: string;
+  uid: string;
 }

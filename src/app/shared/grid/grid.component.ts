@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
@@ -17,6 +17,7 @@ export class GridComponent implements OnInit {
   @Input() gridTitle: string;
   @Input() emptySearch: string;
   @Input() emptyList: string;
+  @Output() goToDetails = new EventEmitter<string>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

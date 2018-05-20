@@ -1,6 +1,7 @@
 <app-grid
   [columns]="columns"
   [entities]="users"
+  (goToDetails)="goToDetails($event)"
   emptySearch="No students found"
   emptyList="There is no students in the system"
   gridTitle="List of Students"

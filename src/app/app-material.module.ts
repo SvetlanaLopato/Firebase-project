@@ -8,6 +8,7 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatTabsModule,
 } from '@angular/material';
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule,
   ],
 })
 export class AppMaterialModule {}

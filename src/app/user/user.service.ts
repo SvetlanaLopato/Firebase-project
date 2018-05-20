@@ -20,4 +20,10 @@ export class UserService {
         name: this.namePipe.transform(user),
       })));
   }
+
+  getUser(uid: string) {
+    return this.database.ref(`users/${uid}`)
+      .once('value')
+      .then(snapshot => snapshot.val());
+  }
 }
