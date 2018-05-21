@@ -1,0 +1,17 @@
+.footer,
+.footer.mat-dialog-actions {
+  padding: 24px;
+  background-color: $grey--5;
+  border-top: 1px solid $grey--1;
+  display: flex;
+  justify-content: flex-end;
+
+  .button:not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.footer.mat-dialog-actions {
+  margin-left: -24px;
+  margin-right: -24px;
+}

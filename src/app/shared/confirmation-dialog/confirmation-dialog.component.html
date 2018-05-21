@@ -1,0 +1,17 @@
+<h1 mat-dialog-title class="dialog-title">
+  <i class="material-icons dialog-icon">new_releases</i>
+  {{data.title}}
+</h1>
+<div mat-dialog-content>
+  <p class="dialog-content">{{data.question}}</p>
+</div>
+<div mat-dialog-actions class="footer">
+  <button
+    class="button"
+    (click)="dialogRef.close({ confirmed: false })"
+  >cancel</button>
+  <button
+    class="button"
+    (click)="dialogRef.close({ confirmed: true })"
+  >{{data.action}}</button>
+</div>

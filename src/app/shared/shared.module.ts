@@ -17,6 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NamePipe } from './pipes/name.pipe';
 import { RoleGuard } from './guards/role.guard';
 import { GridComponent } from './grid/grid.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { GridComponent } from './grid/grid.component';
     SidebarComponent,
     NamePipe,
     GridComponent,
+    ConfirmationDialogComponent,
   ],
   exports: [
     WaitingIndicatorComponent,
@@ -47,5 +49,6 @@ import { GridComponent } from './grid/grid.component';
     WaitingIndicatorService,
     UtilsService,
   ],
+  entryComponents: [ConfirmationDialogComponent],
 })
 export class SharedModule { }

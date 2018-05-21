@@ -1,0 +1,46 @@
+<div class="details-wrapper">
+  <div class="details-section" *ngIf="(user | async) as user">
+    <img [src]="user.photoUrl || DEFAULT_PHOTO_URL" class="user-photo">
+    <div class="edit-icon" (click)="openEditDialog()" *ngIf="isAdmin">
+      <mat-icon class="material-icon--sm">mode_edit</mat-icon>
+      <span>Edit</span>
+    </div>
+    <div class="user-fields">
+      <dl>
+        <dt>First Name:</dt>
+        <dd>{{user.firstName}}</dd>
+        <dt>Last Name:</dt>
+        <dd>{{user.lastName}}</dd>
+        <dt>Middle Name:</dt>
+        <dd>{{user.middleName}}</dd>
+      </dl>
+      <dl>
+        <dt>Email:</dt>
+        <dd>{{user.email}}</dd>
+        <dt>Date of Birth:</dt>
+        <dd>{{user.dateOfBirth | date:"MMM d, y"}}</dd>
+        <dt>Role:</dt>
+        <dd>{{user.role}}</dd>
+      </dl>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="user-fields">
+      <dl>
+        <dt>Course:</dt>
+        <dd>{{user.course}} course</dd>
+        <dt>Group:</dt>
+        <dd>{{user.group}}</dd>
+      </dl>
+    </div>
+
+    <div class="details-section-title" *ngIf="user.additionalInfo">
+      Additional Info
+    </div>
+    <p class="additional-info">{{user.additionalInfo}}</p>
+  </div>
+  <div class="footer" *ngIf="isAdmin">
+    <button class="button" (click)="deleteUser()">Delete user</button>
+  </div>
+</div>

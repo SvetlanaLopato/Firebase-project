@@ -1,0 +1,25 @@
+@import '../../styles/base/variables';
+
+.user-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.user-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 40px 0;
+}
+
+.additional-info {
+  line-height: 24px;
+  color: $grey--3;
+}

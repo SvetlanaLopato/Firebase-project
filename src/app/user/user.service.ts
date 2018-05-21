@@ -26,4 +26,8 @@ export class UserService {
       .once('value')
       .then(snapshot => snapshot.val());
   }
+
+  deleteUser(uid: string) {
+    return this.database.ref(`users/${uid}`).remove();
+  }
 }
