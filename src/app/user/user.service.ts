@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 
 import { NamePipe } from '../shared/pipes/name.pipe';
-import { User } from '../authorization/models/user';
+import { User, UserCredentials } from '../authorization/models/user';
 
 @Injectable()
 export class UserService {
@@ -29,5 +29,9 @@ export class UserService {
 
   deleteUser(uid: string) {
     return this.database.ref(`users/${uid}`).remove();
+  }
+
+  editUser(uid: string, user: User) {
+    return this.database.ref(`users/${uid}`).set(user);
   }
 }

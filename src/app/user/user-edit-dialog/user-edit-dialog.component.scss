@@ -1,0 +1,86 @@
+@import '../../styles/base/variables';
+
+.user-edit-form {
+  text-align: center;
+}
+
+.upload-image-field {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+  justify-self: flex-end;
+
+  input {
+    display: none;
+  }
+
+  &:not(.disable-upload):hover .upload-field {
+    opacity: 1;
+  }
+}
+
+.photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.upload-wrapper {
+  position: absolute;
+  background: transparentize($white--1, 0.7);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+
+  .mat-icon {
+    color: $blue--1;
+  }
+}
+
+.upload-field {
+  opacity: 0;
+}
+
+.disable-upload {
+  cursor: not-allowed;
+}
+
+.name-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 290px;
+}
+
+.photo-block {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+  margin-top: 15px;
+
+  .mat-form-field {
+    width: 290px;
+  }
+}
+
+.justify-self--end {
+  justify-self: flex-end;
+}
+
+.additional-info-field {
+  width: 630px;
+  margin-bottom: 20px;
+}

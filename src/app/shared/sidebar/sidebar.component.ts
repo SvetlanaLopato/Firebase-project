@@ -13,14 +13,16 @@ export class SidebarComponent implements OnInit {
   DEFAULT_PHOTO_URL = '/assets/images/unknown.png';
   isMenuOpen: false;
   user: User;
-  isAdmin: boolean;
 
   constructor(
     public authorizationService: AuthorizationService,
   ) {}
 
   ngOnInit() {
-    this.isAdmin = this.authorizationService.hasRole(USER_ROLES.ADMIN);
     this.user = this.authorizationService.getUser();
+  }
+
+  isAdmin() {
+    return this.authorizationService.hasRole(USER_ROLES.ADMIN);
   }
 }

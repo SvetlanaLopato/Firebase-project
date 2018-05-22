@@ -28,7 +28,7 @@
       <mat-icon class="sidebar-icon">people_outline</mat-icon>
       <span class="sidebar-link">Teacher list</span>
     </a>
-    <a routerLink="/registration" *ngIf="isAdmin" class="sidebar-link-block">
+    <a routerLink="/registration" *ngIf="isAdmin()" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">person_add</mat-icon>
       <span class="sidebar-link">Add user</span>
     </a>

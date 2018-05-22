@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NamePipe } from '../shared/pipes/name.pipe';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserPersonalInfoComponent } from './user-personal-info/user-personal-info.component';
+import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,11 +24,13 @@ import { UserPersonalInfoComponent } from './user-personal-info/user-personal-in
   declarations: [
     UsersComponent,
     UserDetailsComponent,
-    UserPersonalInfoComponent
+    UserPersonalInfoComponent,
+    UserEditDialogComponent
   ],
   providers: [
     UserService,
     NamePipe,
   ],
+  entryComponents: [UserEditDialogComponent],
 })
 export class UserModule {}
