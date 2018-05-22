@@ -60,12 +60,20 @@ export class RegistrationComponent {
   submit(user) {
     this.loading.next(true);
 
-    const query = this.utilsService.trim(user);
+    const newUser = this.utilsService.trim(user);
+
+    if (newUser.role === USER_ROLES.STUDENT) {
+      const uid = (new Date()).valueOf();
+
+      this.saveUserToDB(newUser, { uid });
+
+      return;
+    }
 
     this.authorizationService
-      .createUser(query)
+      .createUser(newUser)
       .then(
-        this.saveUserToDB.bind(this, query),
+        this.saveUserToDB.bind(this, newUser),
         error => {
           this.loading.next(false);
           this.errorMessage = error.message;
