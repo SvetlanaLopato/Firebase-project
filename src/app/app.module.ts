@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { HttpInterceptorService } from './shared/http-interceptor.service';
-import { UserModule } from './user/user.module';
+import { StudentModule } from './student/student.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,7 +24,7 @@ import { UserModule } from './user/user.module';
         CdkTableModule,
         AppMaterialModule,
         AuthorizationModule,
-        UserModule,
+        StudentModule,
         SharedModule,
     ],
     providers: [{

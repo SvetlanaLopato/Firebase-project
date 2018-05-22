@@ -10,15 +10,15 @@ import { AuthorizationService } from '../../authorization/authorization.service'
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 import { User } from '../../authorization/models/user';
 import { UtilsService } from '../../shared/services/utils.service';
-import { UserService } from '../user.service';
+import { UserService } from '../student.service';
 
 @Component({
   selector: 'app-user-edit-dialog',
-  templateUrl: './user-edit-dialog.component.html',
-  styleUrls: ['./user-edit-dialog.component.scss']
+  templateUrl: './student-edit-dialog.component.html',
+  styleUrls: ['./student-edit-dialog.component.scss']
 })
 
-export class UserEditDialogComponent implements OnInit {
+export class StudentEditDialogComponent implements OnInit {
   userEditForm: FormGroup;
   DEFAULT_PHOTO_URL = '/assets/images/unknown.png';
   uploadingPhoto = new BehaviorSubject(false);
@@ -26,7 +26,7 @@ export class UserEditDialogComponent implements OnInit {
   COURSES = COURSES;
 
   constructor(
-    public dialogRef: MatDialogRef<UserEditDialogComponent>,
+    public dialogRef: MatDialogRef<StudentEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public user: any,
     private formBuilder: FormBuilder,
     private validatorService: ValidatorService,

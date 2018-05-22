@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
 
-import { USER_COLUMNS } from './user-columns';
-import { UserService } from '../user.service';
+import { USER_COLUMNS } from './student-columns';
+import { UserService } from '../student.service';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  templateUrl: './students.component.html',
+  styleUrls: ['./students.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class StudentsComponent implements OnInit {
   displayedColumns: string[];
   dataSource = new MatTableDataSource<any>();
   columns = USER_COLUMNS;

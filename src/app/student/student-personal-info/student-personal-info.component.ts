@@ -5,16 +5,16 @@ import { Router } from '@angular/router';
 import { AuthorizationService } from '../../authorization/authorization.service';
 import { USER_ROLES } from '../../authorization/models/user-roles';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../user.service';
+import { UserService } from '../student.service';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
-import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
+import { StudentEditDialogComponent } from '../student-edit-dialog/student-edit-dialog.component';
 
 @Component({
   selector: 'app-user-personal-info',
-  templateUrl: './user-personal-info.component.html',
-  styleUrls: ['./user-personal-info.component.scss']
+  templateUrl: './student-personal-info.component.html',
+  styleUrls: ['./student-personal-info.component.scss']
 })
-export class UserPersonalInfoComponent implements OnInit {
+export class StudentPersonalInfoComponent implements OnInit {
   @Input() user;
   DEFAULT_PHOTO_URL = '/assets/images/unknown.png';
   isAdmin: boolean;
@@ -34,7 +34,7 @@ export class UserPersonalInfoComponent implements OnInit {
 
   openEditDialog() {
     this.dialog
-      .open(UserEditDialogComponent, {
+      .open(StudentEditDialogComponent, {
         width: '788px',
         data: {...this.user.value},
       })

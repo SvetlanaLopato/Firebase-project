@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { UserService } from '../user.service';
+import { UserService } from '../student.service';
 import { User } from '../../authorization/models/user';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 
 @Component({
   selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  templateUrl: './student-details.component.html',
+  styleUrls: ['./student-details.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
+export class StudentDetailsComponent implements OnInit {
   user = new BehaviorSubject(null);
 
   constructor(

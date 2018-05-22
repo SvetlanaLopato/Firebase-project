@@ -22,15 +22,19 @@
 
     <a routerLink="/students" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">people</mat-icon>
-      <span class="sidebar-link">User list</span>
+      <span class="sidebar-link">Student List</span>
     </a>
     <a routerLink="/teachers" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">people_outline</mat-icon>
-      <span class="sidebar-link">Teacher list</span>
+      <span class="sidebar-link">Teacher List</span>
+    </a>
+    <a routerLink="/admins" class="sidebar-link-block">
+      <mat-icon class="sidebar-icon">people_outline</mat-icon>
+      <span class="sidebar-link">Admin List</span>
     </a>
     <a routerLink="/registration" *ngIf="isAdmin()" class="sidebar-link-block">
       <mat-icon class="sidebar-icon">person_add</mat-icon>
-      <span class="sidebar-link">Add user</span>
+      <span class="sidebar-link">Add User</span>
     </a>
   </div>
 

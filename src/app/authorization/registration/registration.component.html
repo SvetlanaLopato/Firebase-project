@@ -128,7 +128,8 @@
             formControlName="role"
             required
           >
-            <mat-option [value]="USER_ROLES.USER">{{USER_ROLES.USER}}</mat-option>
+            <mat-option [value]="USER_ROLES.TEACHER">{{USER_ROLES.TEACHER}}</mat-option>
+            <mat-option [value]="USER_ROLES.ADMIN">{{USER_ROLES.STUDENT}}</mat-option>
             <mat-option [value]="USER_ROLES.ADMIN">{{USER_ROLES.ADMIN}}</mat-option>
           </mat-select>
           <mat-error *ngIf="registrationForm.get('role').hasError('required')">

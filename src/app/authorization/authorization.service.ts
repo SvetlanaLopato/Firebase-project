@@ -3,7 +3,6 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 
 import { UserCredentials, User } from './models/user';
-import { USER_ROLES } from './models/user-roles';
 
 @Injectable()
 export class AuthorizationService {
@@ -60,9 +59,8 @@ export class AuthorizationService {
 
   saveUserToDB(uid: string, user: User) {
     const database: any = firebase.database();
-    const folderName = user.role === USER_ROLES.ADMIN ? 'admins' : 'users';
 
-    return database.ref(`${folderName}/${uid}`).set({ ...user, uid });
+    return database.ref(`${user.role.toLowerCase()}s/${uid}`).set({ ...user, uid });
   }
 
   isAuthorized(): boolean {
