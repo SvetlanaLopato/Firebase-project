@@ -1,5 +1,5 @@
 <div>
-  <div class="grid-toolbar wrapper--md">
+  <div class="grid-toolbar wrapper--md" *ngIf="gridOptions?.isSearchAvailable">
     <h2 class="caption--md">
       {{gridTitle}}
       <span class="grid-total-count">({{dataSource.data.length}})</span>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div class="grid-filters wrapper--md">
+  <div *ngIf="gridOptions?.isFilterAvailable" class="grid-filters wrapper--md">
     <mat-form-field>
       <mat-select placeholder="Course" multiple [formControl]="courseControl">
         <mat-option *ngFor="let course of courses" [value]="course">
@@ -67,6 +67,14 @@
           <mat-cell *matCellDef="let row" [ngStyle]="{'width': column.width}">
             <div [ngSwitch]="column.template">
               <div *ngSwitchCase="'date'">{{row[column.id] | date:"MMM d, y"}}</div>
+
+              <div *ngSwitchCase="'subjectEdit'">
+                <mat-icon class="edit-button" [matMenuTriggerFor]="editMenu">more_vert</mat-icon>
+                <mat-menu #editMenu="matMenu" class="menu">
+                  <button mat-menu-item (click)="gridOptions?.actions?.edit(row)">Edit</button>
+                  <button mat-menu-item (click)="gridOptions?.actions?.delete(row)">Delete</button>
+                </mat-menu>
+              </div>
   
               <div *ngSwitchDefault class="ellipsis">
                 {{row[column.id]}}
@@ -79,6 +87,7 @@
         <mat-row
           *matRowDef="let row; columns: displayedColumns;"
           (click)="goToDetails.emit(row.uid)"
+          [ngClass]="{'clickable-row': gridOptions?.clickableRow}"
         ></mat-row>
       </mat-table>
   

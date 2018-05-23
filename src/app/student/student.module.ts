@@ -11,6 +11,7 @@ import { NamePipe } from '../shared/pipes/name.pipe';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentPersonalInfoComponent } from './student-personal-info/student-personal-info.component';
 import { StudentEditDialogComponent } from './student-edit-dialog/student-edit-dialog.component';
+import { StudentSubjectsComponent } from './student-subjects/student-subjects.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { StudentEditDialogComponent } from './student-edit-dialog/student-edit-d
     StudentsComponent,
     StudentDetailsComponent,
     StudentPersonalInfoComponent,
-    StudentEditDialogComponent
+    StudentEditDialogComponent,
+    StudentSubjectsComponent
   ],
   providers: [
     UserService,

@@ -1,0 +1,10 @@
+<div class="action-block">
+  <button class="outline-button" (click)="addSubject()">Add Subject</button>
+</div>
+
+<app-grid
+  [columns]="columns"
+  [entities]="subjects"
+  emptyList="There is no subjects for this user"
+  gridTitle="List of Subjects"
+></app-grid>

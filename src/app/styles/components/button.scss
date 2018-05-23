@@ -26,6 +26,42 @@
   }
 }
 
+.outline-button {
+  display: inline-block;
+  padding: 10px 66px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: $white--1;
+  color: $blue--1;
+  border: 1px solid $blue--1;
+
+  &:focus,
+  &:active {
+    background-image: none;
+    background-color: $blue--1;
+    color: $white--1;
+  }
+
+  &:hover {
+    background-image: none;
+    background-color: $blue--1;
+    color: $white--1;
+  }
+
+  &[disabled] {
+    background-color: $white--1;
+    border: 1px solid $grey--4;
+    color: $grey--3;
+    cursor: not-allowed;
+  }
+}
+
 .back-button {
   width: 30px;
   height: 30px;
@@ -40,5 +76,17 @@
 
   &:hover {
     background-color: $grey--4;
+  }
+}
+
+.edit-button {
+  font-size: 24px;
+  color: transparentize($grey--2, 0.4);
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $blue--1;
   }
 }

@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
 
-import { USER_COLUMNS } from './student-columns';
+import { STUDENT_COLUMNS } from './student-columns';
 import { UserService } from '../student.service';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
+import { GridOptions } from '../../shared/models/grid';
 
 @Component({
   selector: 'app-users',
@@ -16,8 +17,9 @@ import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-
 export class StudentsComponent implements OnInit {
   displayedColumns: string[];
   dataSource = new MatTableDataSource<any>();
-  columns = USER_COLUMNS;
+  columns = STUDENT_COLUMNS;
   users = new BehaviorSubject([]);
+  gridOptions: GridOptions;
 
   constructor(
     private userService: UserService,
@@ -26,6 +28,12 @@ export class StudentsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.gridOptions = {
+      isSearchAvailable: true,
+      isFilterAvailable: true,
+      clickableRow: true,
+    };
+
     this.waitingIndicator.enable();
 
     this.userService

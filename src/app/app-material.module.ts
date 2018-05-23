@@ -10,6 +10,7 @@ import {
   MatSortModule,
   MatTabsModule,
   MatDialogModule,
+  MatMenuModule,
 } from '@angular/material';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {
     MatSortModule,
     MatTabsModule,
     MatDialogModule,
+    MatMenuModule,
   ],
 })
 export class AppMaterialModule {}

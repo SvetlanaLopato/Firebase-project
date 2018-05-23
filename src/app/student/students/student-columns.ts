@@ -1,4 +1,4 @@
-export const USER_COLUMNS = [{
+export const STUDENT_COLUMNS = [{
   id: 'name',
   title: 'Name',
   width: '30%',

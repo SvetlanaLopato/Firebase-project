@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 
 import { Column } from '../models/columns';
 import { WaitingIndicatorService } from '../waiting-indicator/waiting-indicator.service';
+import { GridOptions } from '../models/grid';
 
 @Component({
   selector: 'app-grid',
@@ -17,6 +18,7 @@ export class GridComponent implements OnInit {
   @Input() gridTitle: string;
   @Input() emptySearch: string;
   @Input() emptyList: string;
+  @Input() gridOptions: GridOptions;
   @Output() goToDetails = new EventEmitter<string>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -41,8 +43,8 @@ export class GridComponent implements OnInit {
     this.displayedColumns = _.map(this.columns, 'id');
     this.searchableColumns = _(this.columns).filter('searchable').map('id').value();
 
-    this.initFilters();
-    this.initSearch();
+    _.get(this.gridOptions, 'isFilterAvailable') && this.initFilters();
+    _.get(this.gridOptions, 'isSearchAvailable') && this.initSearch();
 
     this.entities.subscribe(entities => {
       this.allEntities = entities;

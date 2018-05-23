@@ -30,17 +30,20 @@
     border-top: 1px solid transparent;
     border-right: 1px solid transparent;
     border-left: 1px solid transparent;
-    cursor: pointer;
+
+    &.clickable-row {
+      cursor: pointer;
+    }
 
     &:nth-child(2n) {
       background: $grey--5;
     }
 
-    &:hover {
+    &.clickable-row:hover {
       border: 1px solid $blue--3;
     }
 
-    &:last-child:hover {
+    &.clickable-row:last-child:hover {
       border-radius: 0 0 4px 4px;
     }
   }
