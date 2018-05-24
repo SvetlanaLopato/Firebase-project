@@ -11,12 +11,18 @@ $ firebase use information-system
 $ firebase serve
 ```
 
-###Deploy:
+###Express server:
 ```
-$ firebase deploy
+$ node server.js
 ```
+
 
 ###Build:
 ```
 $ npm run-script build
+```
+
+###Deploy:
+```
+$ firebase deploy
 ```

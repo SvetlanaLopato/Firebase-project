@@ -24,6 +24,7 @@ export class StudentSubjectsComponent implements OnInit {
         edit: this.editSubject.bind(this),
       },
     };
+
     this.subjects.next([{
       title: 'Math',
       hours: 123,
