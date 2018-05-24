@@ -18,6 +18,7 @@ import { NamePipe } from './pipes/name.pipe';
 import { RoleGuard } from './guards/role.guard';
 import { GridComponent } from './grid/grid.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     ValidatorService,
     WaitingIndicatorService,
     UtilsService,
+    MessageService,
   ],
   entryComponents: [ConfirmationDialogComponent],
 })
