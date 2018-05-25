@@ -53,14 +53,9 @@
 }
 
 .correspondents-info {
-  display: flex;
-  justify-content: space-between;
-
-  dl {
-    grid-template-columns: 30px 1fr;
-    line-height: 22px;
-    border-bottom: 1px solid $grey--7;
-  }
+  grid-template-columns: 30px 1fr;
+  line-height: 22px;
+  border-bottom: 1px solid $grey--7;
 
   dd, dt {
     color: $grey--7;
