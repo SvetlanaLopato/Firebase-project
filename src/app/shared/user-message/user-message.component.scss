@@ -1,0 +1,68 @@
+@import '../../styles/base/variables';
+
+.wrapper--md {
+  margin: 0;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.action-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .button {
+    margin-left: 20px;
+  }
+}
+
+.mat-checkbox {
+  margin: 0 15px;
+}
+
+.message {
+  border: 1px solid $grey--4;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.message-content {
+  padding: 16px;
+}
+
+.message-header {
+  background-color: $grey--5;
+  border-bottom: 1px solid $grey--4;
+  font-weight: 700;
+  color: $grey--8;
+  padding: 16px;
+}
+
+.messages {
+  margin-top: 50px;
+}
+
+.message-text {
+  color: $grey--7;
+  line-height: 22px;
+  margin-top: 20px;
+}
+
+.correspondents-info {
+  display: flex;
+  justify-content: space-between;
+
+  dl {
+    grid-template-columns: 30px 1fr;
+    line-height: 22px;
+    border-bottom: 1px solid $grey--7;
+  }
+
+  dd, dt {
+    color: $grey--7;
+  }
+}

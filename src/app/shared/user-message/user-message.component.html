@@ -1,0 +1,86 @@
+<div class="wrapper--md">
+  <div class="details-section">
+    <div class="details-section-title">
+      <h4>Write new message</h4>
+    </div>
+
+    <form
+      novalidate
+      [formGroup]="messageForm"
+      (ngSubmit)="send(messageForm.value)"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="To"
+          formControlName="to"
+          maxlength="100"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="form"
+          formControlName="from"
+          maxlength="100"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Subject"
+          formControlName="subject"
+          maxlength="100"
+          autofocus
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          matInput
+          matTextareaAutosize
+          matAutosizeMaxRows="10"
+          placeholder="Message"
+          formControlName="text"
+          maxlength="1000"
+        ></textarea>
+      </mat-form-field>
+      <div class="action-wrapper">
+        <mat-checkbox formControlName="sendToUser">Send to user mailbox</mat-checkbox>
+        <mat-checkbox formControlName="sendToSystem">Add to system</mat-checkbox>
+        <button
+          [disabled]="!sendMessageAvailable()"
+          type="submit"
+          class="button"
+        >send</button>
+      </div>
+    </form>
+
+    <div class="messages" *ngIf="messages.length">
+      <div class="details-section-title">
+        <h4>Messages</h4>
+      </div>
+      <div class="message" *ngFor="let message of messages">
+        <div class="message-header ellipsis">
+          {{message.subject}}
+        </div>
+        <div class="message-content">
+          <div class="correspondents-info">
+            <dl>
+              <dt>From:</dt>
+              <dd>{{message.from}}</dd>
+            </dl>
+            <dl>
+              <dt>To:</dt>
+              <dd>{{message.to}}</dd>
+            </dl>
+          </div>
+
+          <p class="message-text">{{message.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

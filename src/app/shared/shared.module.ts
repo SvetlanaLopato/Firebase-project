@@ -19,6 +19,7 @@ import { RoleGuard } from './guards/role.guard';
 import { GridComponent } from './grid/grid.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MessageService } from './services/message.service';
+import { UserMessageComponent } from './user-message/user-message.component';
 
 @NgModule({
   imports: [
@@ -35,11 +36,13 @@ import { MessageService } from './services/message.service';
     NamePipe,
     GridComponent,
     ConfirmationDialogComponent,
+    UserMessageComponent,
   ],
   exports: [
     WaitingIndicatorComponent,
     SidebarComponent,
     GridComponent,
+    UserMessageComponent,
   ],
   providers: [
     HttpInterceptorService,

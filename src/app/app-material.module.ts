@@ -11,6 +11,7 @@ import {
   MatTabsModule,
   MatDialogModule,
   MatMenuModule,
+  MatCheckboxModule,
 } from '@angular/material';
 
 @NgModule({
@@ -26,6 +27,7 @@ import {
     MatTabsModule,
     MatDialogModule,
     MatMenuModule,
+    MatCheckboxModule,
   ],
 })
 export class AppMaterialModule {}
