@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash';
@@ -17,6 +17,7 @@ import { MessageService } from '../services/message.service';
 })
 export class UserMessageComponent implements OnInit {
   @Input() user: Observable<User>;
+  @Output() addMessage = new EventEmitter<string>();
   messageForm: FormGroup;
   messages = [{
     from: 'test@adznaka.by',
@@ -66,8 +67,8 @@ export class UserMessageComponent implements OnInit {
     }, {});
     const message: any = this.utilsServie.trim(_.pick(value, ['from', 'to', 'subject', 'text']));
 
-    // value.sendToUser && this.messageService.sendMessage(message);
-    // value.sendToSystem && this.studentService.addMessage(message);
+    value.sendToUser && this.messageService.sendMessage(message);
+    value.sendToSystem && this.addMessage.emit(message);
   }
 
   sendMessageAvailable() {

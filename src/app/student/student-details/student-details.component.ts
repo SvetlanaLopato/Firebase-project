@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
+import { Message } from './../../shared/models/message';
 import { StudentService } from '../student.service';
 import { User } from '../../authorization/models/user';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
@@ -37,4 +38,6 @@ export class StudentDetailsComponent implements OnInit {
   back() {
     this.router.navigate(['students']);
   }
+
+  addMessage(message: Message) {}
 }
