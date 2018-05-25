@@ -20,8 +20,9 @@ export class AuthorizationService {
 
         localStorage.setItem(this.tokenTitle, token);
 
-        this.getUserFromDB('users');
+        this.getUserFromDB('students');
         this.getUserFromDB('admins');
+        this.getUserFromDB('teachers');
       });
   }
 

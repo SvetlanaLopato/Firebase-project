@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { UserService } from '../student.service';
+import { StudentService } from '../student.service';
 import { User } from '../../authorization/models/user';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 
@@ -17,7 +17,7 @@ export class StudentDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    private studentService: StudentService,
     public waitingIndicator: WaitingIndicatorService,
   ) {}
 
@@ -26,7 +26,7 @@ export class StudentDetailsComponent implements OnInit {
 
     this.waitingIndicator.enable();
 
-    this.userService
+    this.studentService
       .getUser(uid)
       .then((user: User) => {
         this.waitingIndicator.disable();

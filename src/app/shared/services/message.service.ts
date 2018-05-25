@@ -12,12 +12,10 @@ export class MessageService {
   ) {}
 
   sendMessage(message: Message) {
-    message.to = 'gsvetlanalopato@gmail.com';
-
-    this.http.post('/api/mail', message).subscribe(() => {
-      this.snackBar.open('Message was successfully sent', null, {
-        duration: 2000,
-      });
-    });
+    // this.http.post('/api/mail', message).subscribe(() => {
+    //   this.snackBar.open('Message was successfully sent', null, {
+    //     duration: 2000,
+    //   });
+    // });
   }
 }

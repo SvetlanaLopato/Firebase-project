@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthorizationService } from '../../authorization/authorization.service';
 import { USER_ROLES } from '../../authorization/models/user-roles';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../student.service';
+import { StudentService } from '../student.service';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 import { StudentEditDialogComponent } from '../student-edit-dialog/student-edit-dialog.component';
 
@@ -22,7 +22,7 @@ export class StudentPersonalInfoComponent implements OnInit {
   constructor(
     public authorizationService: AuthorizationService,
     private dialog: MatDialog,
-    private userService: UserService,
+    private studentService: StudentService,
     private waitingIndicator: WaitingIndicatorService,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -62,7 +62,7 @@ export class StudentPersonalInfoComponent implements OnInit {
 
         this.waitingIndicator.enable();
 
-        this.userService.deleteUser(this.user.value.uid).then(() => {
+        this.studentService.deleteUser(this.user.value.uid).then(() => {
           this.waitingIndicator.disable();
           this.router.navigate(['students']);
           this.snackBar.open('Student was successfully deleted', null, {

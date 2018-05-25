@@ -19,12 +19,12 @@ export class UserMessageComponent implements OnInit {
   @Input() user: Observable<User>;
   messageForm: FormGroup;
   messages = [{
-    from: 'aa@example.com',
+    from: 'test@adznaka.by',
     to: 'aa@example.com',
     subject: 'Subject',
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electr',
   }, {
-    from: 'aa@example.com',
+    from: 'test@adznaka.by',
     to: 'aa@example.com',
     subject: 'Subject',
     text: 'Hello',
@@ -59,15 +59,15 @@ export class UserMessageComponent implements OnInit {
 
   send() {
     const controls = this.messageForm.controls;
-    const value: any = Object.keys(controls).reduce((accum, messgeField: string) => {
-      accum[messgeField] = controls[messgeField].value;
+    const value: any = Object.keys(controls).reduce((accumulator, messageField: string) => {
+      accumulator[messageField] = controls[messageField].value;
 
-      return accum;
+      return accumulator;
     }, {});
     const message: any = this.utilsServie.trim(_.pick(value, ['from', 'to', 'subject', 'text']));
 
     // value.sendToUser && this.messageService.sendMessage(message);
-    // value.sendToSystem && this.userService.addMessage(message);
+    // value.sendToSystem && this.studentService.addMessage(message);
   }
 
   sendMessageAvailable() {

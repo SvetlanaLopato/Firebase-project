@@ -10,7 +10,7 @@ import { AuthorizationService } from '../../authorization/authorization.service'
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 import { User } from '../../authorization/models/user';
 import { UtilsService } from '../../shared/services/utils.service';
-import { UserService } from '../student.service';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-user-edit-dialog',
@@ -30,7 +30,7 @@ export class StudentEditDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public user: any,
     private formBuilder: FormBuilder,
     private validatorService: ValidatorService,
-    private userService: UserService,
+    private studentService: StudentService,
     private waitingIndicator: WaitingIndicatorService,
     private utilsService: UtilsService,
     private authorizationService: AuthorizationService,
@@ -76,7 +76,7 @@ export class StudentEditDialogComponent implements OnInit {
 
     this.waitingIndicator.enable();
 
-    this.userService
+    this.studentService
       .editUser(this.user.uid, updatedUser)
       .then((data) => {
         this.waitingIndicator.disable();

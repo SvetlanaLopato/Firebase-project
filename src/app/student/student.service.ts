@@ -5,7 +5,7 @@ import { NamePipe } from '../shared/pipes/name.pipe';
 import { User, UserCredentials } from '../authorization/models/user';
 
 @Injectable()
-export class UserService {
+export class StudentService {
   database = firebase.database();
 
   constructor(
@@ -13,7 +13,7 @@ export class UserService {
   ) {}
 
   getUsers() {
-    return this.database.ref('users')
+    return this.database.ref('students')
       .once('value')
       .then(snapshot => Object.values(snapshot.val()).map((user: User) => ({
         ...user,
@@ -22,16 +22,16 @@ export class UserService {
   }
 
   getUser(uid: string) {
-    return this.database.ref(`users/${uid}`)
+    return this.database.ref(`students/${uid}`)
       .once('value')
       .then(snapshot => snapshot.val());
   }
 
   deleteUser(uid: string) {
-    return this.database.ref(`users/${uid}`).remove();
+    return this.database.ref(`students/${uid}`).remove();
   }
 
   editUser(uid: string, user: User) {
-    return this.database.ref(`users/${uid}`).set(user);
+    return this.database.ref(`students/${uid}`).set(user);
   }
 }

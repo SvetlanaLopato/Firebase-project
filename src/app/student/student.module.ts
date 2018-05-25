@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentRoutingModule } from './student-routing.module';
 import { AppMaterialModule } from '../app-material.module';
 import { StudentsComponent } from './students/students.component';
-import { UserService } from './student.service';
+import { StudentService } from './student.service';
 import { SharedModule } from '../shared/shared.module';
 import { NamePipe } from '../shared/pipes/name.pipe';
 import { StudentDetailsComponent } from './student-details/student-details.component';
@@ -30,7 +30,7 @@ import { StudentSubjectsComponent } from './student-subjects/student-subjects.co
     StudentSubjectsComponent
   ],
   providers: [
-    UserService,
+    StudentService,
     NamePipe,
   ],
   entryComponents: [StudentEditDialogComponent],

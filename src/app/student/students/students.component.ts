@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
 
 import { STUDENT_COLUMNS } from './student-columns';
-import { UserService } from '../student.service';
+import { StudentService } from '../student.service';
 import { WaitingIndicatorService } from '../../shared/waiting-indicator/waiting-indicator.service';
 import { GridOptions } from '../../shared/models/grid';
 
@@ -22,7 +22,7 @@ export class StudentsComponent implements OnInit {
   gridOptions: GridOptions;
 
   constructor(
-    private userService: UserService,
+    private studentService: StudentService,
     private waitingIndicator: WaitingIndicatorService,
     private router: Router,
   ) {}
@@ -36,7 +36,7 @@ export class StudentsComponent implements OnInit {
 
     this.waitingIndicator.enable();
 
-    this.userService
+    this.studentService
       .getUsers()
       .then(users => {
         this.waitingIndicator.disable();
