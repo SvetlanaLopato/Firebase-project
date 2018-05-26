@@ -67,10 +67,12 @@
           {{message.subject}}
         </div>
         <div class="message-content">
-          <dl class="correspondents-info">
-            <dt>From:</dt>
-            <dd>{{message.from}}</dd>
-          </dl>
+          <div class="correspondents-info-wrapper">
+            <dl class="correspondents-info">
+              <dt>From:</dt>
+              <dd>{{message.from}}</dd>
+            </dl>
+          </div>
 
           <p class="message-text">{{message.text}}</p>
         </div>

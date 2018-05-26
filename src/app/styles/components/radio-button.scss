@@ -1,0 +1,90 @@
+.mat-radio-button {
+  &.checkbox-radio-item {
+    .mat-radio-outer-circle {
+      border-color: $grey--3;
+    }
+
+    .mat-radio-label-content {
+      color: $grey--3;
+    }
+
+    &:hover {
+      .mat-radio-outer-circle {
+        border-color: $grey--3;
+      }
+
+      .mat-radio-label-content {
+        color: $grey--2;
+      }
+    }
+
+    &.mat-radio-checked .mat-radio-container .mat-radio-outer-circle {
+      border-color: $grey--3;
+    }
+
+    &.mat-radio-checked .mat-radio-label-content {
+      color: $grey--2;
+    }
+
+    &.mat-radio-checked .mat-radio-container .mat-radio-inner-circle,
+    .mat-radio-container .mat-radio-inner-circle {
+      background-color: $grey--3;
+    }
+  }
+
+  .mat-radio-container,
+  .mat-radio-outer-circle,
+  .mat-radio-inner-circle {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mat-radio-outer-circle {
+    border-color: $grey--2;
+  }
+
+  &.mat-radio-checked .mat-radio-container .mat-radio-outer-circle {
+    border-color: $blue--1;
+  }
+
+  &:hover {
+    .mat-radio-outer-circle {
+      border-color: $blue--1;
+    }
+
+    .mat-radio-label-content {
+      color: $blue--1;
+    }
+  }
+
+  &.mat-radio-checked .mat-radio-container .mat-radio-inner-circle,
+  .mat-radio-container .mat-radio-inner-circle {
+    background-color: $blue--1;
+  }
+
+  &.mat-radio-checked .mat-radio-label-content {
+    color: $blue--1;
+  }
+
+  .mat-radio-ripple {
+    display: none;
+  }
+
+  &.mat-radio-disabled {
+    .mat-radio-label-content {
+      color: $grey--3;
+    }
+
+    .mat-radio-container .mat-radio-outer-circle {
+      border-color: $grey--3;
+    }
+
+    .mat-radio-container .mat-radio-inner-circle {
+      background-color: $grey--3;
+    }
+
+    .mat-radio-label {
+      cursor: not-allowed;
+    }
+  }
+}

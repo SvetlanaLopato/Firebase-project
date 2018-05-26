@@ -12,6 +12,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { StudentPersonalInfoComponent } from './student-personal-info/student-personal-info.component';
 import { StudentEditDialogComponent } from './student-edit-dialog/student-edit-dialog.component';
 import { StudentSubjectsComponent } from './student-subjects/student-subjects.component';
+import { StudentAddSubjectDialogComponent } from './student-add-subject-dialog/student-add-subject-dialog.component';
 
 @NgModule({
   imports: [
@@ -27,12 +28,16 @@ import { StudentSubjectsComponent } from './student-subjects/student-subjects.co
     StudentDetailsComponent,
     StudentPersonalInfoComponent,
     StudentEditDialogComponent,
-    StudentSubjectsComponent
+    StudentSubjectsComponent,
+    StudentAddSubjectDialogComponent
   ],
   providers: [
     StudentService,
     NamePipe,
   ],
-  entryComponents: [StudentEditDialogComponent],
+  entryComponents: [
+    StudentEditDialogComponent,
+    StudentAddSubjectDialogComponent,
+  ],
 })
 export class StudentModule {}

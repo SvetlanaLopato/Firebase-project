@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material';
 
 import { STUDENT_SUBJECT_COLUMNS } from './student-subject-columns';
 import { GridOptions } from '../../shared/models/grid';
+import { StudentAddSubjectDialogComponent } from '../student-add-subject-dialog/student-add-subject-dialog.component';
 
 @Component({
   selector: 'app-student-subjects',
@@ -15,7 +17,9 @@ export class StudentSubjectsComponent implements OnInit {
   subjects = new BehaviorSubject([]);
   gridOptions: GridOptions;
 
-  constructor() {}
+  constructor(
+    private dialog: MatDialog,
+  ) {}
 
   ngOnInit() {
     this.gridOptions = {
@@ -41,5 +45,12 @@ export class StudentSubjectsComponent implements OnInit {
 
   editSubject() {}
 
-  addSubject() {}
+  addSubject() {
+    this.dialog
+      .open(StudentAddSubjectDialogComponent, {
+        width: '788px',
+      })
+      .afterClosed()
+      .subscribe();
+  }
 }

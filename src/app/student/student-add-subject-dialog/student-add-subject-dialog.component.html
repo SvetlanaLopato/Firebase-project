@@ -1,0 +1,104 @@
+<h1 mat-dialog-title class="dialog-title">
+  <i class="material-icons dialog-icon">edit</i>
+  {{subject ? 'Save' : 'Add'}} Student Subject
+</h1>
+<div mat-dialog-content>
+  <form
+    novalidate
+    [formGroup]="studentSubjectForm"
+  >
+    <div class="subject-fields">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Title"
+          formControlName="title"
+          maxlength="100"
+          required
+        />
+        <mat-error *ngIf="studentSubjectForm.get('title').hasError('required')">
+          Field cannot be empty
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Hours"
+          type="number"
+          formControlName="hours"
+          maxlength="4"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Semester"
+          type="number"
+          formControlName="semester"
+          maxlength="2"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          placeholder="Control Type"
+          formControlName="controlType"
+        >
+          <mat-option [value]="CONTROL_TYPES.EXAM">{{CONTROL_TYPES.EXAM}}</mat-option>
+          <mat-option [value]="CONTROL_TYPES.ZACHET">{{CONTROL_TYPES.ZACHET}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="studentSubjectForm.get('controlType').hasError('required')">
+          Field cannot be empty
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox class="pass-identificator-field" formControlName="passIdentificator">Pass Identificator</mat-checkbox>
+    </div>
+
+    <div class="mark-field">
+      <h4 class="caption--sm">Mark</h4>
+      <mat-radio-group formControlName="mark" class="mark-value">
+        <mat-radio-button value="1">1</mat-radio-button>
+        <mat-radio-button value="2">2</mat-radio-button>
+        <mat-radio-button value="3">3</mat-radio-button>
+        <mat-radio-button value="4">4</mat-radio-button>
+        <mat-radio-button value="5">5</mat-radio-button>
+        <mat-radio-button value="6">6</mat-radio-button>
+        <mat-radio-button value="7">7</mat-radio-button>
+        <mat-radio-button value="8">8</mat-radio-button>
+        <mat-radio-button value="9">9</mat-radio-button>
+        <mat-radio-button value="10">10</mat-radio-button>
+      </mat-radio-group> 
+    </div>
+
+    <mat-form-field class="teacher-field">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let teacher of teachers" (removed)="removeTeacher(teacher)">
+          {{teacher.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input
+          formControlName="teachers"
+          placeholder="Teachers"
+          [matChipInputFor]="chipList"
+          [matAutocomplete]="auto"
+        />
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectTeacher($event)">
+        <mat-option *ngFor="let teacher of availableTeachers" [value]="teacher">
+          {{teacher.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="footer">
+  <button
+    class="button"
+    (click)="dialogRef.close()"
+  >Cancel</button>
+  <button
+    class="button"
+    [disabled]="studentSubjectForm.invalid"
+    (click)="save(studentSubjectForm.value)"
+  >{{subject ? 'Save' : 'Add'}}</button>
+</div>
