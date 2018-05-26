@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const PORT = 4200;
-const SENDGRID_API_KEY = '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';
+const SENDGRID_API_KEY = '';
 
 app.use(express.static('dist'));
 app.use(bodyParser.json());
