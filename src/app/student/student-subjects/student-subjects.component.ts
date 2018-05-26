@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { STUDENT_SUBJECT_COLUMNS } from './student-subject-columns';
 import { GridOptions } from '../../shared/models/grid';
 import { StudentAddSubjectDialogComponent } from '../student-add-subject-dialog/student-add-subject-dialog.component';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-student-subjects',
@@ -41,7 +42,19 @@ export class StudentSubjectsComponent implements OnInit {
     }]);
   }
 
-  deleteSubject() {}
+  deleteSubject() {
+    this.dialog
+      .open(ConfirmationDialogComponent, {
+        width: '626px',
+        data: {
+          title: 'Delete subject',
+          question: 'Are you sure you want to delete subject?',
+          action: 'delete',
+        },
+      })
+      .afterClosed()
+      .subscribe();
+  }
 
   editSubject() {}
 

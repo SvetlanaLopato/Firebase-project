@@ -28,9 +28,9 @@ export const STUDENT_SUBJECT_COLUMNS = [{
   title: 'Teachers',
   width: '25%',
 }, {
-  id: 'subjectEdit',
+  id: 'edit',
   title: '',
   width: '6%',
   disableSorting: true,
-  template: 'edit'
+  template: 'subjectEdit'
 }];
